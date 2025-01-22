@@ -19,5 +19,25 @@ class Character:
           print(self.name + " doesn't want to talk to you")
 
     def fight(self, combat_item):
-        print(self.name + " doesn't want to fight with you")
+        print(self.name + " No fighs here. I'd rather dance with you")
         return True
+    
+class Enemy(Character):
+
+    def __init__(self, char_name, char_description):
+        super().__init__(char_name, char_description)
+        self.weakness = None
+
+    def set_weakness(self, item_weakness):
+        self.weakness = item_weakness
+
+    def get_weakness(self):
+        return self.weakness
+    
+    def fight(self, combat_item):
+        if combat_item == self.weakness:
+            print("You fend " + self.name + " off with the " + combat_item )
+            return True
+        else:
+            print(self.name + " crushes you, puny adventurer")
+            return False
