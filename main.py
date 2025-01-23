@@ -17,8 +17,15 @@ dining_hall.link_room(kitchen, "north")
 dining_hall.link_room(ballroom,"west")
 ballroom.link_room(dining_hall,"east")
 
-current_room = kitchen
+from character import Enemy 
 
+dave = Enemy("Dave", "A smelly zombie")
+dave.set_conversation("Brrlgrhaargh... rghlaar... brains...")
+dave.set_weakness("beer")
+
+dining_hall.set_character(dave)
+
+current_room = kitchen
 while True:
     print("\n")
     current_room.get_details()
@@ -26,18 +33,9 @@ while True:
     inhabitant = current_room.get_character()
     if inhabitant is not None:
         inhabitant.describe()
+        
+    command = input("> ")
+    current_room = current_room.move(command)
 
-        command = input("> ")
-        current_room = current_room.move(command)
-        break
-
-from character import Enemy # If removeing the break in the above block of code, Code is unreachable Pylance - 
-
-dave = Enemy("Dave", "A smelly zombie")
-dave.set_conversation("Brrlgrhaargh... rghlaar... brains...")
-dave.set_weakness("beer")
-dining_hall.set_character(dave)
-
-# Note on Code is unreachable: Exception error (??)
-# If you're calling a function that we know is going to never return, it means the code after that can't be analysed.
-# Ref: https://github.com/microsoft/pylance-release/issues/2981
+    #The code runs and would let move to south but then stuck between ballroom and dining rooms
+    # The code not giving any conversation, i.e., no option for convo/fight inputs
