@@ -31,11 +31,11 @@ while True:
         current_room = current_room.move(command)
         break
 
-from character import Enemy # If removeing the break in the above block of code, Code is unreacable Pylance - 
+from character import Enemy # If removeing the break in the above block of code, Code is unreachable Pylance - 
 
 dave = Enemy("Dave", "A smelly zombie")
 dave.set_conversation("Brrlgrhaargh... rghlaar... brains...")
 dave.set_weakness("beer")
 dining_hall.set_character(dave)
 
-# Code is unreachable (Exception?) error - If you're calling a function that we know is going to never return, it means the code after that can't be analysed.
+# Note on Code is unreachable: Exception error (??) - If you're calling a function that we know is going to never return, it means the code after that can't be analysed.
