@@ -33,9 +33,11 @@ while True:
     inhabitant = current_room.get_character()
     if inhabitant is not None:
         inhabitant.describe()
-        
+        print("What will you fight with?")
+        fight_with = input()
+        dave.fight(fight_with)
+
     command = input("> ")
     current_room = current_room.move(command)
 
     #The code runs and would let move to south but then stuck between ballroom and dining rooms
-    # The code not giving any conversation, i.e., no option for convo/fight inputs
