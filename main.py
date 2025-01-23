@@ -38,4 +38,6 @@ dave.set_conversation("Brrlgrhaargh... rghlaar... brains...")
 dave.set_weakness("beer")
 dining_hall.set_character(dave)
 
-# Note on Code is unreachable: Exception error (??) - If you're calling a function that we know is going to never return, it means the code after that can't be analysed.
+# Note on Code is unreachable: Exception error (??)
+# If you're calling a function that we know is going to never return, it means the code after that can't be analysed.
+# Ref: https://github.com/microsoft/pylance-release/issues/2981
