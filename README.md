@@ -50,7 +50,8 @@ It is a fun exercise for those new to Python and practising code.
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+There were no direct contributions by other individuals on this occassion, however, it was very helpful to learn from questions other students had about the game in the class. 
+ChatGPT helped me with a couple of queries - this has been commented in the code.
 
 <!-- LICENSE -->
 ## License
