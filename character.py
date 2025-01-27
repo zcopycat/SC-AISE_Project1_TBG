@@ -15,7 +15,8 @@ class Character:
         print(self.description)
 
     # Set what this character will say when talked to
-    def name(self):
+    #Renamed metod as 'say_name' as causing a conflict with the self.name attribute (ChatGPT suggestion)
+    def say_name(self): 
         print(self.name)
 
     def set_conversation(self, conversation):
@@ -30,7 +31,14 @@ class Character:
         if self.inventory:
             print(f"{self.name}'s inventory:")
             for item in self.inventory:
-                print(item.name)  # Print the name of each item
+                #print(item.name)  # Print the name of each item (error?) - 'str' object has no attribute 'name'
+                # tried replacing the above with item.describe_item() but something still missing in the code
+                #ChatGPT suggested fix below
+                # If 'item' is an object, print item.name. If it's a string, print it directly.
+                if hasattr(item, 'name'):
+                    print(item.name)
+                else:
+                    print(item)  # Print the string item directly
         else:
             print(f"{self.name} has no items in their inventory.")
 
@@ -45,6 +53,10 @@ class Character:
     def fight(self, combat_item):
         print(f"{self.name} How about we talk this through?")
         return True
+    # ChatGPT suggested the following code for the above so that it would still have a default implementation from the Character class.
+    # def fight(self, combat_item):
+    #     print(f"{self.name} doesn't want to fight!")
+    #     return False
     
 class Enemy(Character):
 
@@ -70,7 +82,7 @@ class Enemy(Character):
     def steal(self, item):
         if item in self.inventory:
             print(f"You steal from {self.name}")
-            self.inventory -= item
+            self.inventory -= item # ChatGPT suggested rewriting using remove method: self.inventory.remove(item)
 
     # Add a new steal method to the Enemy character 
 class Friend(Character):
@@ -82,8 +94,11 @@ class Friend(Character):
     def hug(self):
         print(f"{self.name} hugs you back!")
 
-    # Could a gift method to the Friend character 
+    # Could a gift method to the Friend character - ChatGPT suggested to re-write as below:
     # def gift(self, item):
-    #     if item in self.inventory:
-    #         print(f"A gift from {self.name} to you")
-    #         self.inventory += item
+    #   if item not in self.inventory:
+    #       print(f"{self.name} doesn't have that item to give!")
+    #   else:
+    #       print(f"A gift from {self.name} to you: {item}")
+    #       self.inventory.remove(item)  # Removes the item from the friend's inventory
+        # Here, ChatGPT suggests I would need to add the item to the recipient's inventory
