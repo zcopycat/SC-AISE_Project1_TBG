@@ -76,7 +76,7 @@ while dead == False:
     elif command == "fight":
         if inhabitant is not None and isinstance(inhabitant, Enemy):
             # Fight with the inhabitant, if there is one
-            inhabitant.show_inventory() # DOES NOT WORK - need to fix line 33-34 in character file!!!
+            inhabitant.show_inventory() # It kind of works but need to look into str format between lines 38-41 in character file
             print("What will you fight with?")
             fight_with = input()
             if inhabitant.fight(fight_with) == True:
