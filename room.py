@@ -1,6 +1,6 @@
 class Room:
-    def __init__(self):
-        self.name = None
+    def __init__(self, room_name):
+        self.name = room_name
         self.description = None 
         self.linked_rooms = {}
         self.character = None
